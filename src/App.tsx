@@ -1,5 +1,7 @@
 import React from 'react';
 import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
 
 function App() {
   return (
@@ -10,6 +12,12 @@ function App() {
       <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>hello</Button>
       <Button btnType={ButtonType.Link} href="dfdsdf" size={ButtonSize.Large}>Link</Button>
       <Button btnType={ButtonType.Link} href="http://www.baidu.com" target="_blank">Link1</Button>
+      <div>
+        <Menu>
+          <MenuItem index={0}>12345</MenuItem>
+          <MenuItem index={1}>3456</MenuItem>
+        </Menu>
+      </div>
     </div>
   );
 }
