@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, RenderResult, cleanup } from '@testing-library/react'
+import { fireEvent, render, RenderResult, cleanup, waitFor } from '@testing-library/react'
 import Menu, { MenuProps } from './menu'
 import MenuItem from './menuItem'
 import SubMenu from './subMenu'
@@ -40,7 +40,7 @@ const createStyleFile = () => {
       display: none;
     }
     .dorae-submenu.menu-opened {
-      display: none;
+      display: block;
     }
   `
   const style = document.createElement('style')
@@ -86,8 +86,13 @@ describe('test Menu MenuItem Component', () => {
     const menuElement = wrapper.getByTestId('test-menu')
     expect(menuElement).toHaveClass('menu-vertical')
   })
-  it('subMenu test', () => {
+  it('subMenu test', async () => {
     // 判断是否展示在页面视野中
     expect(wrapper.queryByText('drop1')).not.toBeVisible()
+    const dropdownElement = wrapper.getByText('dropdown')
+    fireEvent.mouseEnter(dropdownElement)
+    await waitFor(() => {
+      expect(wrapper.queryByText('drop1')).toBeVisible()
+    })
   })
 })
