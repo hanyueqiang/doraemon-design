@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import Button from './button'
+import '../../styles/index.scss'
 
 const defaultButton = () => (
   <Button onClick={action('clicked')}> default button </Button>
@@ -19,7 +20,7 @@ const buttonWithType = () => (
   <>
     <Button btnType="primary"> primary button </Button>
     <Button btnType="danger"> danger button </Button>
-    <Button btnType="link" href="https://google.com"> link button </Button>
+    <Button btnType="link" href="https://www.baidu.com"> link button </Button>
   </>
 )
 storiesOf('Button Component', module)
